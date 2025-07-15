@@ -84,7 +84,7 @@ jobs:
           PR_SHA: ${{ steps.get-pr-number.outputs.PR_SHA }}
         run: |
           ls -al $GITHUB_WORKSPACE/physmon
-          echo "# 📊: Physics performance monitoring for ${PR_SHA}" >> comment.md
+          echo "# 📊: Validation plots for ${PR_SHA}" >> comment.md
           echo "[Full contents](${ARTIFACT_URL})" >> comment.md
           if [ -f "$GITHUB_WORKSPACE/physmon/summary.md" ]; then
             cat $GITHUB_WORKSPACE/physmon/summary.md >> comment.md
