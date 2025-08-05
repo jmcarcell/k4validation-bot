@@ -37,7 +37,7 @@ jobs:
       - name: Install ROOT and histcmp
         shell: bash -l {0}
         run: |
-          mamba install -y root
+          conda install -y root
           pip install histcmp==0.8.1
 
       - name: Test histcmp version
