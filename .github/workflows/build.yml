@@ -27,10 +27,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up mambaforge
-        uses: conda-incubator/setup-miniconda@v3
+      - name: Set up miniforge
+        uses: conda-incubator/setup-miniforge@v3
         with:
-          miniforge-variant: Mambaforge
+          miniforge-variant: Miniforge3
           python-version: 3.10
           channels: conda-forge
 
