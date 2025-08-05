@@ -27,10 +27,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install histcmp
-        run: python3 -m pip install histcmp==0.8.1
+      - name: Set up mambaforge
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-variant: Mambaforge
+          python-version: 3.10
+          channels: conda-forge
+
+      - name: Install ROOT and histcmp
+        shell: bash -l {0}
+        run: |
+          mamba install -y root
+          pip install histcmp==0.8.1
 
       - name: Test histcmp version
+        shell: bash -l {0}
         run: histcmp --version
 
   # linux_physmon:
