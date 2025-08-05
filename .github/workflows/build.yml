@@ -42,7 +42,7 @@ jobs:
 
       - name: Test histcmp version
         shell: bash -l {0}
-        run: histcmp --version
+        run: histcmp --help
 
   # linux_physmon:
   #   runs-on: ubuntu-latest
