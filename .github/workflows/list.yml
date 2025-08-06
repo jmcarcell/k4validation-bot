@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/key4hep/key4hep-images/alma9-cvmfs
+      volumes:
+        - /cvmfs:/cvmfs
     steps:
       - name: List contents of /cvmfs
         run: ls -l /cvmfs/sw.hsf.org/
