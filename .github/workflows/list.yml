@@ -1,0 +1,19 @@
+# .github/workflows/list-cvmfs.yml
+name: List /cvmfs in Key4hep Image
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+  workflow_dispatch:
+
+
+jobs:
+  list-cvmfs:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/key4hep/key4hep-images/alma9-cvmfs
+    steps:
+      - name: List contents of /cvmfs
+        run: ls -l /cvmfs
