@@ -14,7 +14,7 @@ function run() {
 export run
 
 outdir=${1:-k4validation-bot}
-refdir=${K4VALIDATION_REF_DIR:-k4validation-bot}
+refdir=${2:-k4validation-bot}
 mkdir -p $outdir
 mkdir -p $outdir/data
 mkdir -p $outdir/html

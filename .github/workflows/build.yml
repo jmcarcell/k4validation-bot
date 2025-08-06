@@ -42,5 +42,5 @@ jobs:
 
       - name: Test histcmp version
         shell: bash -l {0}
-        run: CI/test.sh
+        run: CI/test.sh "$GITHUB_WORKSPACE" "$GITHUB_WORKSPACE"
 
