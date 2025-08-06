@@ -40,7 +40,16 @@ jobs:
           conda install -y root
           pip install histcmp==0.8.1
 
-      - name: Test histcmp version
+      - name: Test histcmp
         shell: bash -l {0}
         run: CI/test.sh "$GITHUB_WORKSPACE" "$GITHUB_WORKSPACE"
+
+      - name: Upload histcmp plots and results
+        uses: actions/upload-artifact@v4
+        if: always()  # Upload even if tests fail
+        with:
+          name: histcmp-results
+          path: |
+            ${{ github.workspace }}/html/
+            ${{ github.workspace }}/histcmp_results.csv
 
