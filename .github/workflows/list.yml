@@ -16,4 +16,4 @@ jobs:
       image: ghcr.io/key4hep/key4hep-images/alma9-cvmfs
     steps:
       - name: List contents of /cvmfs
-        run: ls -l /cvmfs
+        run: ls -l /cvmfs/sw.hsf.org/
