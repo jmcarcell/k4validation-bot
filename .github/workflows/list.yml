@@ -19,4 +19,7 @@ jobs:
       options: --privileged
     steps:
       - name: List contents of /cvmfs
-        run: ls -l /cvmfs/sw.hsf.org/
+        run: |
+          cat /mount.sh
+          /mount.sh
+          ls -l /cvmfs/sw.hsf.org/
