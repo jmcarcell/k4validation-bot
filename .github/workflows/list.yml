@@ -18,8 +18,9 @@ jobs:
         - /cvmfs:/cvmfs
       options: --privileged
     steps:
+      # Mandatory step
+      - name: Set up cvmfs 
+        run: /mount.sh
       - name: List contents of /cvmfs
         run: |
-          cat /mount.sh
-          /mount.sh
           ls -l /cvmfs/sw.hsf.org/
