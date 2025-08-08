@@ -1,4 +1,4 @@
-name: Report on validation
+name: Report on histcmp-results
 
 on:
   workflow_run:
@@ -24,7 +24,7 @@ jobs:
                run_id: context.payload.workflow_run.id,
             });
             let matchArtifacts = allArtifacts.data.artifacts.filter((artifact) => {
-              return artifact.name == 'validation'
+              return artifact.name == 'histcmp-results'
             });
             if(matchArtifacts.length == 0) {
               console.log("Could not find artifact");
@@ -39,15 +39,15 @@ jobs:
                archive_format: 'zip',
             });
             let fs = require('fs');
-            fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/validation.zip`, Buffer.from(download.data));
-            let = url = `https://test-key4hep-validation.app.cern.ch/view?repo=${process.env.GITHUB_REPOSITORY}&id=${matchArtifact.id}`;
+            fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/histcmp-results.zip`, Buffer.from(download.data));
+            let url = `https://test-key4hep-validation.app.cern.ch/view?repo=${process.env.GITHUB_REPOSITORY}&id=${matchArtifact.id}&path=html/performance_trackfitting.html`;
 
             core.exportVariable('ARTIFACT_URL', url)
             return true;
 
       - name: 'Unzip artifact'
         if: steps.dl-af.outputs.result != 'false'
-        run: unzip -d $GITHUB_WORKSPACE/physmon $GITHUB_WORKSPACE/validation.zip
+        run: unzip -d $GITHUB_WORKSPACE/physmon $GITHUB_WORKSPACE/histcmp-results.zip
 
 
       - name: 'Determine PR number'

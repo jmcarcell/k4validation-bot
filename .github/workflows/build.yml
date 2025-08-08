@@ -20,3 +20,36 @@ jobs:
         with:
           name: validation
           path: images/
+
+  histcmp_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up miniforge
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-variant: Miniforge3
+          python-version: "3.12"
+          channels: conda-forge
+
+      - name: Install ROOT and histcmp
+        shell: bash -l {0}
+        run: |
+          conda install -y root
+          pip install histcmp==0.8.1
+
+      - name: Test histcmp
+        shell: bash -l {0}
+        run: CI/test.sh "$GITHUB_WORKSPACE/new_hist.root" "$GITHUB_WORKSPACE/ref_hist.root" "$GITHUB_WORKSPACE"
+
+      - name: Upload histcmp plots and results
+        uses: actions/upload-artifact@v4
+        if: always()  # Upload even if tests fail
+        with:
+          name: histcmp-results
+          path: |
+            ${{ github.workspace }}/html/
+            ${{ github.workspace }}/histcmp_results.csv
+
