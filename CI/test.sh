@@ -13,9 +13,9 @@ function run() {
 
 export run
 
-newdir=${1:-k4validation-bot}
-refdir=${2:-k4validation-bot}
-outdir=${3:-k4validation-bot}
+newpath=${1:-$GITHUB_WORKSPACE/new_hist.root}
+refpath=${2:-$GITHUB_WORKSPACE/ref_hist.root}
+outdir=${3:-$GITHUB_WORKSPACE}
 mkdir -p $outdir
 mkdir -p $outdir/html
 
@@ -68,8 +68,8 @@ function run_histcmp() {
 }
 
 run_histcmp \
-    $newdir \
-    $refdir \
+    $newpath \
+    $refpath \
     "Test comparison" \
     performance_trackfitting.html \
     performance_trackfitting_plots \

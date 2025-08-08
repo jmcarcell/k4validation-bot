@@ -42,7 +42,7 @@ jobs:
 
       - name: Test histcmp
         shell: bash -l {0}
-        run: CI/test.sh "$GITHUB_WORKSPACE/hist1.root" "$GITHUB_WORKSPACE/hist2.root"
+        run: CI/test.sh "$GITHUB_WORKSPACE/new_hist.root" "$GITHUB_WORKSPACE/ref_hist.root" "$GITHUB_WORKSPACE"
 
       - name: Upload histcmp plots and results
         uses: actions/upload-artifact@v4
