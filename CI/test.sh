@@ -72,8 +72,8 @@ function run_histcmp() {
 }
 
 run_histcmp \
-    $outdir/hist1.root \
-    $refdir/hist2.root \
+    $outdir \
+    $refdir \
     "Test comparison" \
     performance_trackfitting.html \
     performance_trackfitting_plots \
