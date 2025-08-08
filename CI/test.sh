@@ -13,19 +13,15 @@ function run() {
 
 export run
 
-outdir=${1:-k4validation-bot}
+newdir=${1:-k4validation-bot}
 refdir=${2:-k4validation-bot}
+outdir=${3:-k4validation-bot}
 mkdir -p $outdir
-mkdir -p $outdir/data
 mkdir -p $outdir/html
-mkdir -p $outdir/logs
 
 # File to accumulate the histcmp results
 histcmp_results=$outdir/histcmp_results.csv
 echo -n "" > $histcmp_results
-
-memory_dir=${outdir}/memory
-mkdir -p "$memory_dir"
 
 function run_histcmp() {
     a=$1
@@ -72,7 +68,7 @@ function run_histcmp() {
 }
 
 run_histcmp \
-    $outdir \
+    $newdir \
     $refdir \
     "Test comparison" \
     performance_trackfitting.html \
